@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bianchi Consulting — Da 10k a 50k/mese in 90 Giorni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1234567890123456');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1234567890123456&ev=PageView&noscript=1"/></noscript>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --accent:#2563EB;
+  --accent-hover:#1d4ed8;
+  --bg:#0A0A0A;
+  --card:#111111;
+  --elevated:#1A1A1A;
+  --text:#F8F8F8;
+  --secondary:#A0A0A0;
+  --muted:#606060;
+  --border:rgba(255,255,255,0.08);
+  --radius-card:12px;
+  --radius-btn:8px;
+  --radius-pill:9999px;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+.fade-up{animation:fadeUp 0.7s ease both}
+.fade-in{animation:fadeIn 0.6s ease both}
+.delay-1{animation-delay:0.1s}
+.delay-2{animation-delay:0.2s}
+.delay-3{animation-delay:0.3s}
+.delay-4{animation-delay:0.4s}
+.delay-5{animation-delay:0.5s}
+
+/* LAYOUT */
+.container{width:100%;max-width:860px;margin:0 auto;padding:0 24px}
+.section{padding:80px 0}
+@media(min-width:768px){.section{padding:120px 0}}
+
+/* HEADER */
+.header{
+  padding:24px 0;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:center;
+  animation:fadeIn 0.5s ease both;
+}
+.logo{height:36px;width:auto}
+
+/* PILL */
+.pill{
+  display:inline-block;
+  padding:6px 16px;
+  border-radius:var(--radius-pill);
+  border:1px solid rgba(37,99,235,0.4);
+  background:rgba(37,99,235,0.1);
+  color:var(--accent);
+  font-size:clamp(11px,2vw,13px);
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+/* HEADLINES */
+h1{
+  font-size:clamp(28px,6vw,56px);
+  font-weight:900;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:20px;
+}
+h2{
+  font-size:clamp(22px,4vw,38px);
+  font-weight:800;
+  line-height:1.2;
+  letter-spacing:-0.01em;
+  margin-bottom:16px;
+}
+h3{
+  font-size:clamp(17px,2.5vw,22px);
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.accent{color:var(--accent)}
+.underline-accent{
+  text-decoration:underline;
+  text-decoration-color:var(--accent);
+  text-underline-offset:4px;
+}
+
+/* HERO */
+.hero{text-align:center;padding:60px 0 40px}
+@media(min-width:768px){.hero{padding:80px 0 50px}}
+.hero p{
+  font-size:clamp(16px,2.5vw,20px);
+  color:var(--secondary);
+  max-width:620px;
+  margin:0 auto 32px;
+}
+
+/* VIDEO */
+.video-wrapper{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#000;
+  box-shadow:0 24px 60px rgba(0,0,0,0.6);
+}
+.video-wrapper iframe{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  border:none;
+}
+
+/* COPY SECTIONS */
+.copy-block{max-width:720px;margin:0 auto}
+.copy-block p{
+  font-size:clamp(15px,2vw,18px);
+  color:var(--secondary);
+  margin-bottom:20px;
+  line-height:1.75;
+}
+.copy-block p strong{color:var(--text);font-weight:600}
+
+/* DIVIDER */
+.divider{
+  width:60px;height:3px;
+  background:var(--accent);
+  border-radius:2px;
+  margin:32px auto;
+}
+
+/* MECHANISM */
+.mechanism-grid{
+  display:grid;
+  gap:16px;
+  margin-top:40px;
+}
+@media(min-width:600px){.mechanism-grid{grid-template-columns:repeat(3,1fr)}}
+
+.mechanism-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-card);
+  padding:28px 24px;
+  transition:border-color 0.2s ease,transform 0.2s ease;
+}
+.mechanism-card:hover{
+  border-color:rgba(37,99,235,0.4);
+  transform:translateY(-3px);
+}
+.step-num{
+  font-size:12px;
+  font-weight:700;
+  color:var(--accent);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.mechanism-card h3{font-size:17px;margin-bottom:8px}
+.mechanism-card p{font-size:14px;color:var(--secondary);line-height:1.6}
+
+/* STATS */
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin:48px 0;
+}
+@media(min-width:600px){.stats-row{grid-template-columns:repeat(4,1fr)}}
+
+.stat-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-card);
+  padding:24px 20px;
+  text-align:center;
+}
+.stat-num{
+  font-size:clamp(26px,4vw,36px);
+  font-weight:900;
+  color:var(--accent);
+  letter-spacing:-0.02em;
+  line-height:1;
+  margin-bottom:6px;
+}
+.stat-label{font-size:13px;color:var(--secondary)}
+
+/* CASE STUDY */
+.case-study{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius-card);
+  padding:32px 28px;
+  margin:40px 0;
+}
+.case-study .tag{
+  font-size:12px;font-weight:700;
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  margin-bottom:14px;
+}
+.case-study blockquote{
+  font-size:clamp(16px,2.5vw,20px);
+  font-weight:500;
+  color:var(--text);
+  line-height:1.65;
+  font-style:italic;
+  margin-bottom:16px;
+}
+.case-study .attribution{font-size:14px;color:var(--secondary)}
+.case-study .attribution strong{color:var(--text);font-weight:600}
+
+/* CHECKLIST */
+.check-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:28px;
+}
+.check-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  font-size:clamp(15px,2vw,17px);
+  color:var(--secondary);
+}
+.check-list li strong{color:var(--text);font-weight:600}
+.check-icon{
+  color:var(--accent);
+  font-size:16px;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+/* OFFER BOX */
+.offer-box{
+  background:var(--elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius-card);
+  padding:40px 32px;
+  text-align:center;
+  margin:48px 0;
+}
+.price-display{
+  margin:20px 0;
+}
+.price-display .amount{
+  font-size:clamp(42px,8vw,64px);
+  font-weight:900;
+  color:var(--text);
+  letter-spacing:-0.03em;
+  line-height:1;
+}
+.price-display .period{
+  font-size:18px;
+  color:var(--secondary);
+  font-weight:400;
+}
+
+/* GUARANTEE */
+.guarantee-box{
+  background:var(--card);
+  border:1px solid rgba(37,99,235,0.3);
+  border-radius:var(--radius-card);
+  padding:36px 32px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:16px;
+  margin:0 auto;
+}
+@media(min-width:600px){
+  .guarantee-box{flex-direction:row;align-items:flex-start}
+}
+.guarantee-icon{
+  font-size:36px;
+  flex-shrink:0;
+  line-height:1;
+}
+.guarantee-box h3{font-size:clamp(18px,3vw,22px);margin-bottom:8px}
+.guarantee-box p{font-size:clamp(14px,2vw,16px);color:var(--secondary);line-height:1.7}
+
+/* CTA BUTTONS */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:56px;
+  padding:14px 32px;
+  border-radius:var(--radius-btn);
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(15px,2.5vw,18px);
+  font-weight:700;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  width:100%;
+}
+@media(min-width:480px){.btn{width:auto;min-width:280px}}
+
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 4px 20px rgba(37,99,235,0.3);
+}
+.btn-primary:hover{
+  background:var(--accent-hover);
+  box-shadow:0 6px 28px rgba(37,99,235,0.45);
+  transform:translateY(-2px);
+}
+.btn-whatsapp{
+  background:var(--elevated);
+  color:var(--text);
+  border:1px solid var(--border);
+}
+.btn-whatsapp:hover{
+  border-color:rgba(255,255,255,0.2);
+  background:#222;
+  transform:translateY(-2px);
+}
+
+.cta-group{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  margin-top:32px;
+}
+@media(min-width:600px){.cta-group{flex-direction:row;justify-content:center}}
+
+.cta-note{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:12px;
+  text-align:center;
+}
+
+/* CTA SECTION */
+.cta-section{
+  background:var(--elevated);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:56px 32px;
+  text-align:center;
+}
+
+/* FAQ */
+.faq-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:36px;
+}
+.faq-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  transition:border-color 0.2s ease;
+}
+.faq-item:hover{border-color:rgba(37,99,235,0.3)}
+.faq-question{
+  padding:22px 24px;
+  font-size:clamp(15px,2vw,17px);
+  font-weight:600;
+  color:var(--text);
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  list-style:none;
+  user-select:none;
+}
+.faq-question::after{
+  content:'→';
+  color:var(--accent);
+  font-size:18px;
+  flex-shrink:0;
+  transition:transform 0.2s ease;
+}
+details[open] .faq-question::after{transform:rotate(90deg)}
+.faq-answer{
+  padding:0 24px 22px;
+  font-size:clamp(14px,2vw,16px);
+  color:var(--secondary);
+  line-height:1.75;
+}
+.faq-answer strong{color:var(--text);font-weight:600}
+
+/* SECTION LABEL */
+.section-label{
+  text-align:center;
+  margin-bottom:48px;
+}
+.section-label p{
+  font-size:clamp(15px,2vw,18px);
+  color:var(--secondary);
+  max-width:540px;
+  margin:12px auto 0;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:40px 0;
+  text-align:center;
+}
+footer p{font-size:13px;color:var(--muted);margin-bottom:8px;line-height:1.8}
+footer a{color:var(--muted);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s ease}
+footer a:hover{color:var(--secondary)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <img src="https://bianchiconsulting.it/logo.png" alt="Bianchi Consulting" class="logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span style="display:none;font-size:20px;font-weight:800;letter-spacing:-0.02em;color:var(--text)">Bianchi <span style="color:var(--accent)">Consulting</span></span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="fade-up">
+      <div class="pill">Sistema E-Commerce Acceleration</div>
+    </div>
+    <h1 class="fade-up delay-1">
+      Porta il tuo e-commerce<br>
+      da <span class="underline-accent">10k a 50k/mese</span><br>
+      in <span class="accent">90 giorni</span> — garantito.
+    </h1>
+    <p class="fade-up delay-2">
+      Senza sprecare budget in ads che non convertono. Senza agenzie che spariscono. Con un sistema di acquisizione clienti che funziona in modo prevedibile e scalabile.
+    </p>
+    <div class="fade-up delay-3">
+      <a href="https://calendly.com/marco-bianchi/call-gratuita" class="btn btn-primary" onclick="fbq('track','Lead')">
+        Prenota la tua call gratuita →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section style="padding-bottom:80px">
+  <div class="container fade-up delay-4">
+    <div class="video-wrapper">
+      <iframe
+        src="https://player.vimeo.com/video/76979871?autoplay=0&title=0&byline=0&portrait=0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        title="Bianchi Consulting VSL">
+      </iframe>
+    </div>
+    <p style="text-align:center;font-size:14px;color:var(--muted);margin-top:14px">
+      ★ Guarda questo breve video per capire esattamente come funziona il nostro sistema
+    </p>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="copy-block fade-up">
+      <div class="pill">Il problema reale</div>
+      <h2>Se gestisci un e-commerce, conosci già questa frustrazione.</h2>
+      <p>Hai un prodotto che funziona, un sito che converte, e sai che il potenziale c'è. Ma ogni volta che provi a scalare con le ads, i risultati sono deludenti. Hai bruciato budget su Google Ads senza capire perché non convertisse. Hai assunto un freelance che ti ha promesso grandi risultati e poi è sparito. Hai comprato corsi e implementato strategie che "funzionavano per tutti" tranne che per te.</p>
+      <p><strong>Il risultato? Sei bloccato intorno ai 10k/mese.</strong> Sai che potresti fare molto di più, ma ogni mese che passa senza un sistema affidabile è un mese di fatturato perso — e di concorrenti che avanzano.</p>
+      <p>Non è colpa tua. Il problema non sono le ads. Il problema è che non hai mai avuto un <strong>sistema di acquisizione clienti costruito su misura per il tuo business</strong>, con i dati giusti, le creatività giuste e una strategia di scaling che funziona davvero.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider fade-in"></div>
+
+<!-- SOLUZIONE / MECCANISMO -->
+<section class="section">
+  <div class="container">
+    <div class="section-label fade-up">
+      <div class="pill">Il meccanismo</div>
+      <h2>Il Sistema E-Commerce Acceleration</h2>
+      <p>Non gestiamo semplicemente le tue ads. Costruiamo un intero sistema di acquisizione che lavora per te anche quando dormi.</p>
+    </div>
+
+    <div class="mechanism-grid">
+      <div class="mechanism-card fade-up delay-1">
+        <div class="step-num">◆ Fase 01</div>
+        <h3>Analisi Dati</h3>
+        <p>Analizziamo i tuoi dati storici, il comportamento degli utenti e la concorrenza. Il nostro algoritmo proprietario identifica in 48h esattamente cosa converte per il tuo specifico pubblico — eliminando ogni ipotesi e ogni spreco di budget.</p>
+      </div>
+      <div class="mechanism-card fade-up delay-2">
+        <div class="step-num">◆ Fase 02</div>
+        <h3>Creatività Performante</h3>
+        <p>Sviluppiamo creatività ad con un framework testato su oltre 2 milioni di euro di ad spend. Ogni creativo è ottimizzato per massimizzare il ROAS prima ancora di andare live. Nessuna creatività generica, tutto calibrato sui tuoi prodotti.</p>
+      </div>
+      <div class="mechanism-card fade-up delay-3">
+        <div class="step-num">◆ Fase 03</div>
+        <h3>Scaling Automatico</h3>
+        <p>Una volta identificati i campioni, attiviamo il nostro sistema di scaling progressivo. Le campagne si ottimizzano in autonomia, il budget si sposta automaticamente dove il ROAS è più alto. Il risultato: crescita prevedibile mese dopo mese.</p>
+      </div>
+    </div>
+
+    <div class="copy-block" style="margin-top:56px">
+      <div class="fade-up">
+        <h3 style="font-size:clamp(18px,3vw,24px);margin-bottom:16px">La nostra arma segreta</h3>
+        <p>Il nostro <strong>algoritmo proprietario di analisi delle creatività</strong> non è disponibile in nessun corso, in nessun tool, presso nessuna altra agenzia. In 48 ore da quando attiviamo le campagne, sappiamo già con precisione chirurgica quali creatività hanno il potenziale di scalare e quali no — senza sprecare settimane di test e budget.</p>
+        <p>Questo è il motivo per cui i nostri clienti raggiungono un <strong>ROAS medio di 4.2x</strong> mentre la media del settore è sotto 2x. E perché possiamo permetterci di offrirti una garanzia che nessun'altra agenzia ti darà mai.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-bottom:80px">
+  <div class="container fade-up">
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">2M+</div>
+        <div class="stat-label">Ad Spend gestito</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">80+</div>
+        <div class="stat-label">Clienti e-commerce</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4.2x</div>
+        <div class="stat-label">ROAS medio clienti</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Anni di esperienza</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section style="padding-bottom:100px">
+  <div class="container">
+    <div class="copy-block">
+      <div class="fade-up">
+        <div class="pill">Caso studio reale</div>
+        <h2>Da 8k a 47k/mese in 3 mesi.<br>Un risultato concreto, non una promessa.</h2>
+      </div>
+      <div class="case-study fade-up delay-1">
+        <div class="tag">★ Giorgio — Store di Abbigliamento</div>
+        <blockquote>"Avevo provato di tutto: Google Ads da solo, un freelance che mi ha bruciato 3.000 euro senza risultati, corsi costosi che mi davano strategie generiche. Ero a 8k/mese e sembrava un muro impossibile da scalare. In 90 giorni con il Sistema E-Commerce Acceleration siamo arrivati a 47k/mese. Il bello è che ora il sistema gira da solo — non devo più preoccuparmi di dove arrivano i clienti."</blockquote>
+        <div class="attribution"><strong>Giorgio M.</strong> — Fondatore, brand di abbigliamento italiano</div>
+      </div>
+      <div class="copy-block fade-up delay-2">
+        <p>Giorgio non era un caso eccezionale. Era esattamente come te: aveva un buon prodotto, sapeva che il potenziale c'era, ma non aveva il sistema giusto. In 90 giorni abbiamo costruito insieme la macchina di acquisizione che mancava, e i risultati parlano da soli.</p>
+        <p><strong>Con Meta Blueprint certification, 5 anni di esperienza esclusiva nel settore e-commerce e un metodo a 3 fasi collaudato su 80+ clienti</strong>, siamo in grado di replicare questi risultati per il tuo business — con la garanzia scritta che lo faremo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COSA INCLUDIAMO -->
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label fade-up">
+      <div class="pill">Cosa ottieni</div>
+      <h2>Tutto quello che serve per portare il tuo e-commerce al livello successivo</h2>
+      <p>Non un servizio generico. Un sistema completo costruito intorno al tuo business.</p>
+    </div>
+
+    <div class="copy-block fade-up delay-1">
+      <ul class="check-list">
+        <li><span class="check-icon">✓</span><span><strong>Audit completo del tuo account ads</strong> — Identifichiamo ogni euro sprecato e ogni opportunità nascosta nei tuoi dati storici</span></li>
+        <li><span class="check-icon">✓</span><span><strong>Analisi algoritmica delle creatività in 48h</strong> — Il nostro sistema proprietario analizza cosa converte per il tuo specifico pubblico prima ancora di spendere budget</span></li>
+        <li><span class="check-icon">✓</span><span><strong>Strategia ads su misura</strong> — Struttura campagne, audience targeting, funnel completo progettato per massimizzare il ROAS fin dal primo mese</span></li>
+        <li><span class="check-icon">✓</span><span><strong>Gestione operativa completa</strong> — Ci occupiamo di tutto: creatività, copy, ottimizzazione quotidiana, A/B test sistematici</span></li>
+        <li><span class="check-icon">✓</span><span><strong>Sistema di scaling automatico</strong> — Le campagne vincenti scalano in modo progressivo e controllato senza che tu debba toccare nulla</span></li>
+        <li><span class="check-icon">✓</span><span><strong>Report mensile dettagliato</strong> — Dati chiari, KPI trasparenti, nessun numero gonfiato. Sai sempre esattamente dove sono i tuoi soldi e che risultati producono</span></li>
+        <li><span class="check-icon">✓</span><span><strong>Supporto diretto via Slack</strong> — Il tuo account manager è raggiungibile ogni giorno lavorativo. Niente ticket, niente attese di giorni</span></li>
+        <li><span class="check-icon">✓</span><span><strong>Sistema che funziona anche senza di noi</strong> — Non costruiamo dipendenza. Costruiamo un asset che rimane nel tuo business per sempre</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERTA -->
+<section class="section">
+  <div class="container">
+    <div class="copy-block fade-up">
+      <div class="offer-box">
+        <div class="pill" style="margin-bottom:16px">L'investimento</div>
+        <h2 style="margin-bottom:8px">Sistema E-Commerce Acceleration</h2>
+        <p style="color:var(--secondary);font-size:16px;margin-bottom:24px">Tutto incluso, senza costi nascosti, con garanzia di rimborso totale</p>
+        <div class="price-display">
+          <span class="amount">2.500€</span>
+          <span class="period">/mese</span>
+        </div>
+        <p style="color:var(--muted);font-size:14px;margin-bottom:28px">Impegno minimo 3 mesi — il tempo necessario per raggiungere e garantire i risultati promessi</p>
+        <div class="cta-group" style="justify-content:center">
+          <a href="https://calendly.com/marco-bianchi/call-gratuita" class="btn btn-primary" onclick="fbq('track','InitiateCheckout')">
+            Prenota la tua call gratuita →
+          </a>
+        </div>
+        <p class="cta-note">La call è gratuita e senza impegno. In 30 minuti capiamo se siamo la soluzione giusta per te.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANZIA -->
+<section style="padding-bottom:100px">
+  <div class="container">
+    <div class="copy-block fade-up">
+      <div class="section-label" style="margin-bottom:32px">
+        <div class="pill">La nostra garanzia</div>
+        <h2>Rischio zero per te.<br>Il rischio lo prendiamo noi.</h2>
+      </div>
+      <div class="guarantee-box">
+        <div class="guarantee-icon">◆</div>
+        <div>
+          <h3>Garanzia ROAS 3x in 90 giorni</h3>
+          <p>Se entro 90 giorni dall'inizio della collaborazione non raggiungi almeno un <strong>ROAS di 3x sulle campagne gestite da noi</strong>, ti rimborsiamo integralmente ogni centesimo pagato — senza domande, senza condizioni, senza burocrazia. Puoi richiederlo con una singola email.</p>
+          <p style="margin-top:12px">Non offriamo questa garanzia perché siamo incoscienti. La offriamo perché in 5 anni di lavoro con 80+ clienti e-commerce, il nostro sistema ha sempre mantenuto le promesse. Siamo così sicuri del metodo che il rischio lo prendiamo interamente sulle nostre spalle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section style="padding-bottom:100px">
+  <div class="container fade-up">
+    <div class="cta-section">
+      <div class="pill" style="margin-bottom:16px">Prossimo passo</div>
+      <h2 style="max-width:560px;margin:0 auto 16px">Sei pronto a smettere di stagnare e iniziare a scalare?</h2>
+      <p style="color:var(--secondary);font-size:clamp(15px,2vw,18px);max-width:500px;margin:0 auto 8px">
+        Prenota una call gratuita di 30 minuti. Analizziamo il tuo e-commerce e ti diciamo esattamente cosa serve per arrivare a 50k/mese.
+      </p>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:32px">Nessuna presentazione preregistrata. Nessun venditore. Una conversazione reale con il nostro team.</p>
+      <div class="cta-group">
+        <a href="https://calendly.com/marco-bianchi/call-gratuita" class="btn btn-primary" onclick="fbq('track','Lead')">
+          Prenota la tua call gratuita →
+        </a>
+        <a href="https://wa.me/+393331234567" class="btn btn-whatsapp" target="_blank" rel="noopener">
+          ◆ Scrivici su WhatsApp
+        </a>
+      </div>
+      <p class="cta-note">Disponibilità limitata — accettiamo massimo 5 nuovi clienti al mese per garantire la qualità del servizio</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label fade-up">
+      <div class="pill">Domande frequenti</div>
+      <h2>Risposte dirette alle domande che stai già pensando</h2>
+    </div>
+
+    <div class="faq-list copy-block fade-up delay-1">
+
+      <details class="faq-item">
+        <summary class="faq-question">Ho già provato le ads e non hanno funzionato. Perché questa volta dovrebbe essere diverso?</summary>
+        <div class="faq-answer">
+          <p>Questa è la domanda più comune che riceviamo, ed è giusta. La maggior parte delle ads non funziona perché manca il sistema a monte: analisi dati corretta, creatività costruita su evidenze (non su ipotesi) e una struttura di scaling che porta il budget dove converte davvero. <strong>Non facciamo semplice gestione ads — costruiamo un sistema di acquisizione completo.</strong> Il nostro algoritmo proprietario identifica in 48h cosa converte per il tuo specifico pubblico, eliminando settimane di test ciechi che bruciano budget. E se nonostante tutto non raggiungi un ROAS di 3x in 90 giorni, ti rimborsiamo integralmente. Non hai nulla da perdere nel verificare se siamo la soluzione giusta.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">2.500€/mese è troppo per il mio budget attuale. Come posso giustificare questo investimento?</summary>
+        <div class="faq-answer">
+          <p>Capisco la preoccupazione. Facciamo un calcolo concreto: se sei a 10k/mese e arrivare a 50k/mese in 90 giorni significa +40k di fatturato mensile, <strong>l'investimento di 2.500€ ha un ritorno potenziale di 16x già nel primo trimestre.</strong> E considera che il nostro ROAS medio sui clienti è 4.2x: ogni 1€ investito in ads ne torna 4.2. La domanda reale non è se puoi permetterti questo investimento, ma se puoi permetterti di continuare a stagnare a 10k/mese mentre i tuoi competitor scalano. Prenota la call gratuita — analizziamo insieme i tuoi numeri e ti diciamo onestamente se sei nel profilo giusto per lavorare con noi.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Quanto tempo richiede da parte mia? Non ho tempo da dedicare a questo.</summary>
+        <div class="faq-answer">
+          <p>Abbiamo costruito il Sistema E-Commerce Acceleration esattamente per questo. <strong>Il tuo impegno richiesto è minimo</strong>: un onboarding iniziale di circa 2-3 ore per trasferirci le informazioni sul tuo business, poi una call mensile di 45 minuti per il report dei risultati. Del resto ci occupiamo completamente noi — analisi, creatività, gestione operativa, ottimizzazione quotidiana, scaling. Non costruiamo dipendenza: costruiamo un sistema che funziona anche senza di noi, che diventa un asset permanente del tuo business. Il tuo unico compito è fare crescere l'azienda mentre il sistema lavora per te.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="padding:80px 0">
+  <div class="container fade-up" style="text-align:center">
+    <h2 style="margin-bottom:12px">Inizia oggi. I primi risultati entro 30 giorni.</h2>
+    <p style="color:var(--secondary);font-size:clamp(15px,2vw,17px);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto">Una call di 30 minuti può cambiare la traiettoria del tuo e-commerce. Senza impegno, senza pressioni commerciali.</p>
+    <div class="cta-group" style="justify-content:center">
+      <a href="https://calendly.com/marco-bianchi/call-gratuita" class="btn btn-primary" onclick="fbq('track','Lead')">
+        Prenota la tua call gratuita →
+      </a>
+      <a href="https://wa.me/+393331234567" class="btn btn-whatsapp" target="_blank" rel="noopener">
+        ◆ WhatsApp diretto
+      </a>
+    </div>
+    <p class="cta-note" style="margin-top:16px">★ 5 anni di esperienza · 80+ clienti e-commerce · Certificazione Meta Blueprint · Garanzia rimborso totale</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>
+      <a href="https://bianchiconsulting.it/privacy">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      <a href="https://bianchiconsulting.it/cookie">Cookie Policy</a>
+    </p>
+    <p>Bianchi Consulting Srl — P.IVA IT12345678901</p>
+    <p>© 2024 Bianchi Consulting. Tutti i diritti riservati.</p>
+    <p style="margin-top:16px;font-size:12px;color:var(--muted);max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7">
+      I risultati indicati in questa pagina sono basati su casi reali di clienti Bianchi Consulting. I risultati individuali possono variare in base al settore, al prodotto, al budget e ad altri fattori. La garanzia di rimborso è soggetta ai termini e condizioni del contratto di servizio.
+    </p>
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => {
+  if (!el.style.animationDelay || el.getBoundingClientRect().top > window.innerHeight) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    const delay = el.style.animationDelay || '0s';
+    el.style.transitionDelay = delay;
+    observer.observe(el);
+  }
+});
+</script>
+
+</body>
+</html>
