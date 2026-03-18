@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grazie — Bianchi Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1234567890123456');
+    fbq('track', 'PageView');
+    fbq('track', 'Schedule');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1234567890123456&ev=Schedule&noscript=1"/>
+  </noscript>
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --accent: #2563EB;
+      --accent-hover: #1d4ed8;
+      --bg: #0A0A0A;
+      --card: #111111;
+      --elevated: #1A1A1A;
+      --text-primary: #F8F8F8;
+      --text-secondary: #A0A0A0;
+      --text-muted: #606060;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius-card: 12px;
+      --radius-btn: 8px;
+      --radius-pill: 9999px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes checkDraw {
+      from {
+        stroke-dashoffset: 100;
+        opacity: 0;
+      }
+      to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
+
+    .fade-in-1 { animation: fadeInUp 0.6s ease both; animation-delay: 0.1s; }
+    .fade-in-2 { animation: fadeInUp 0.6s ease both; animation-delay: 0.25s; }
+    .fade-in-3 { animation: fadeInUp 0.6s ease both; animation-delay: 0.4s; }
+    .fade-in-4 { animation: fadeInUp 0.6s ease both; animation-delay: 0.55s; }
+    .fade-in-5 { animation: fadeInUp 0.6s ease both; animation-delay: 0.7s; }
+    .fade-in-6 { animation: fadeInUp 0.6s ease both; animation-delay: 0.85s; }
+
+    /* ─── LAYOUT ─── */
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: clamp(40px, 8vw, 80px) clamp(20px, 5vw, 40px);
+    }
+
+    /* ─── HEADER / LOGO ─── */
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: clamp(40px, 8vw, 64px);
+    }
+
+    .logo-wrap img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-fallback {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .logo-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      text-align: center;
+      margin-bottom: clamp(48px, 10vw, 80px);
+    }
+
+    .check-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.12);
+      border: 2px solid rgba(37, 99, 235, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.05s;
+      position: relative;
+    }
+
+    .check-circle::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(37, 99, 235, 0.15);
+    }
+
+    .check-symbol {
+      font-size: 36px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      border-radius: var(--radius-pill);
+      font-size: clamp(11px, 2.5vw, 13px);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 6vw, 42px);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: clamp(15px, 3vw, 17px);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ─── CONFIRMATION BOX ─── */
+    .confirm-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: clamp(24px, 5vw, 36px);
+      margin-bottom: clamp(32px, 6vw, 48px);
+      border-left: 3px solid var(--accent);
+    }
+
+    .confirm-box p {
+      font-size: clamp(14px, 2.8vw, 16px);
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .confirm-box strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ─── STEPS SECTION ─── */
+    .section-label {
+      font-size: clamp(11px, 2.5vw, 12px);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .steps-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      margin-bottom: clamp(32px, 6vw, 48px);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 20px;
+      padding: clamp(20px, 4vw, 28px) clamp(20px, 5vw, 32px);
+      transition: background 0.2s ease;
+    }
+
+    .step-item:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step-item:hover {
+      background: var(--elevated);
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-title {
+      font-size: clamp(14px, 3vw, 16px);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+
+    .step-desc {
+      font-size: clamp(13px, 2.5vw, 14px);
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .step-desc strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ─── WHATSAPP BUTTON ─── */
+    .cta-section {
+      margin-bottom: clamp(32px, 6vw, 48px);
+      text-align: center;
+    }
+
+    .cta-label {
+      font-size: clamp(13px, 2.5vw, 15px);
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 56px;
+      width: 100%;
+      background: #16a34a;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(15px, 3vw, 17px);
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      text-decoration: none;
+      padding: 16px 32px;
+      transition: background 0.2s ease, transform 0.2s ease;
+      letter-spacing: -0.2px;
+    }
+
+    .btn-whatsapp:hover {
+      background: #15803d;
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp:active {
+      transform: translateY(0);
+    }
+
+    .btn-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    /* ─── REMINDER BOX ─── */
+    .reminder-box {
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: clamp(24px, 5vw, 32px);
+      margin-bottom: clamp(48px, 10vw, 80px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 540px) {
+      .reminder-box {
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+      }
+    }
+
+    .reminder-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--accent);
+    }
+
+    .reminder-content {
+      flex: 1;
+    }
+
+    .reminder-content h3 {
+      font-size: clamp(14px, 3vw, 16px);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.2px;
+    }
+
+    .reminder-content p {
+      font-size: clamp(13px, 2.5vw, 14px);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .btn-reminder {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 22px;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(13px, 2.5vw, 14px);
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+      letter-spacing: -0.1px;
+    }
+
+    .btn-reminder:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-reminder:active {
+      transform: translateY(0);
+    }
+
+    /* ─── TRUST BADGES ─── */
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 20px;
+      margin-bottom: clamp(48px, 8vw, 64px);
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 7px 15px;
+      font-size: clamp(11px, 2.2vw, 13px);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .trust-pill span.dot {
+      color: var(--accent);
+      font-size: 10px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: clamp(24px, 5vw, 36px) clamp(20px, 5vw, 40px);
+    }
+
+    .footer-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    .footer-sep {
+      color: var(--border);
+    }
+
+    .footer-legal {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: clamp(32px, 6vw, 48px) 0;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- 1. LOGO -->
+    <div class="logo-wrap fade-in-1">
+      <a href="https://bianchiconsulting.it" class="logo-fallback">
+        <img
+          src="https://bianchiconsulting.it/logo.png"
+          alt="Bianchi Consulting"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          style="height:40px; width:auto;"
+        />
+        <span class="logo-fallback" style="display:none;">
+          <span class="logo-mark">B</span>
+          <span class="logo-name">Bianchi Consulting</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- 2. HERO: Checkmark + Headline -->
+    <div class="hero">
+
+      <div class="check-circle">
+        <span class="check-symbol">&#10003;</span>
+      </div>
+
+      <div class="fade-in-1">
+        <div class="hero-tag">Prenotazione confermata</div>
+      </div>
+
+      <div class="fade-in-2">
+        <h1>Ottimo lavoro,<br /><span>ci siamo quasi.</span></h1>
+        <p>La tua richiesta di call gratuita e' stata ricevuta con successo. Hai appena fatto il primo passo concreto verso i 50k/mese.</p>
+      </div>
+
+    </div>
+
+    <!-- 3. CONFIRMATION MESSAGE -->
+    <div class="confirm-box fade-in-3">
+      <p>
+        &#10003;&nbsp; <strong>Abbiamo ricevuto la tua richiesta.</strong> A breve riceverai un'email di conferma all'indirizzo che hai indicato, con tutti i dettagli della call e il link per accedere. Controlla anche la cartella spam se non la vedi entro qualche minuto.
+      </p>
+    </div>
+
+    <!-- 4. WHAT HAPPENS NEXT — 3 Steps -->
+    <div class="fade-in-3">
+      <p class="section-label">◆ &nbsp;Cosa succede adesso</p>
+    </div>
+
+    <div class="steps-card fade-in-4">
+
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <div class="step-title">Ricevi l'email di conferma</div>
+          <div class="step-desc">
+            Controlla la tua casella di posta: ti abbiamo inviato tutti i dettagli della call, il link per partecipare e un promemoria. <strong>Aggiungila subito al calendario</strong> per non dimenticarla.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <div class="step-title">Preparati per massimizzare la call</div>
+          <div class="step-desc">
+            Per sfruttare al massimo i 30 minuti insieme, prepara: <strong>il tuo fatturato mensile attuale</strong>, il budget ads che stai investendo (o che vorresti investire) e i canali che hai gia' provato. Piu' dati hai, piu' preciso sara' il piano che costruiamo per te.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <div class="step-title">Durante la call analizziamo il tuo caso</div>
+          <div class="step-desc">
+            Marco analizzera' in diretta <strong>il tuo store, le tue campagne attuali e il tuo mercato</strong>. Identifichera' i colli di bottiglia che ti impediscono di scalare oltre i 10k/mese e ti mostrera' esattamente come il <strong>Sistema E-Commerce Acceleration</strong> puo' portarti a 50k/mese in 90 giorni, con dati reali.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Trust pills -->
+    <div class="trust-row fade-in-4">
+      <span class="trust-pill"><span class="dot">◆</span> 80+ clienti e-commerce</span>
+      <span class="trust-pill"><span class="dot">◆</span> ROAS medio 4.2x</span>
+      <span class="trust-pill"><span class="dot">◆</span> 2M€ di ad spend gestito</span>
+      <span class="trust-pill"><span class="dot">◆</span> Garanzia rimborso 90 giorni</span>
+    </div>
+
+    <!-- 5. WHATSAPP BUTTON -->
+    <div class="cta-section fade-in-5">
+      <p class="cta-label">Hai domande prima della call? Scrivici direttamente su WhatsApp.</p>
+      <a
+        href="https://wa.me/393331234567?text=Ciao%20Marco%2C%20ho%20appena%20prenotato%20una%20call%20e%20avrei%20una%20domanda."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-whatsapp"
+      >
+        <span class="btn-icon">&#9993;</span>
+        Scrivici su WhatsApp
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 6. REMINDER BOX → VSL -->
+    <div class="reminder-box fade-in-5">
+      <div class="reminder-icon">&#9654;</div>
+      <div class="reminder-content">
+        <h3>Nel frattempo, non perdere il video</h3>
+        <p>Guarda come Giorgio ha portato il suo store da 8k a 47k/mese in soli 3 mesi con il nostro sistema.</p>
+      </div>
+      <a href="vsl.html" class="btn-reminder">
+        Guarda ora &nbsp;&#8594;
+      </a>
+    </div>
+
+  </main>
+
+  <!-- 7. FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://bianchiconsulting.it/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+        <span class="footer-sep">|</span>
+        <a href="https://bianchiconsulting.it/cookie" target="_blank" rel="noopener">Cookie Policy</a>
+      </div>
+      <p class="footer-legal">
+        Bianchi Consulting Srl &nbsp;&middot;&nbsp; P.IVA IT12345678901<br />
+        Tutti i diritti riservati. I risultati citati sono casi reali e non garantiscono risultati identici per ogni cliente.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
